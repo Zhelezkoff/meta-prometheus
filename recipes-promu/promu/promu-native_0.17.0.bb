@@ -8,7 +8,7 @@ require promu.inc
 # - DEFAULT_PREFERENCE
 #-------------------------------------------------------------------------------
 
-SRC_URI = "git://github.com/prometheus/promu.git;branch=master;protocol=https"
+SRC_URI = "git://github.com/prometheus/promu.git;branch=master;protocol=https;destsuffix=${GO_SRCURI_DESTSUFFIX}"
 
 #Tag: v0.17.0
 SRCREV = "3912dec4ab83971903015cc7b2a8d8ff93b73910"

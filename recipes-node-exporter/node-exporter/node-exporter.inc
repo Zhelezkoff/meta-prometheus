@@ -5,7 +5,7 @@ do_compile[network] = "1"
 
 SRC_URI:append = " file://node_exporter"
 
-B = "${WORKDIR}/build"
+B = "${UNPACKDIR}/build"
 
 inherit go-mod
 
@@ -32,9 +32,7 @@ FILES:${PN} = "\
 "
 
 do_compile() {
-    chmod -R +w ${B}/.mod/
     oe_runmake PROMU=${WORKDIR}/recipe-sysroot-native/usr/bin/promu build
-    chmod -R +w ${B}/.mod/
 }
 
 do_install:append() {
@@ -54,7 +52,7 @@ do_install:append() {
     if [ "${VIRTUAL-RUNTIME_init_manager}" = "sysvinit" ]; then
         install -d ${D}${sysconfdir}/init.d/
 
-        install -m 0755 ${WORKDIR}/node_exporter ${D}${sysconfdir}/init.d/node_exporter
+        install -m 0755 ${UNPACKDIR}/node_exporter ${D}${sysconfdir}/init.d/node_exporter
     fi
 
     install -d -g node_exporter -o node_exporter ${D}${localstatedir}/lib/node_exporter/textfile_collector

@@ -8,11 +8,7 @@ require node-exporter.inc
 # - DEFAULT_PREFERENCE
 #-------------------------------------------------------------------------------
 
-SRC_URI = "git://github.com/prometheus/node_exporter.git;branch=release-1.8;protocol=https"
-
-#SRC_URI:append = " file://001-remove-bsd-1.8.2.patch;patchdir=src/${GO_IMPORT}"
-
-#SRC_URI:append = " file://0001-Add-trimpath.patch;patchdir=src/${GO_IMPORT}"
+SRC_URI = "git://github.com/prometheus/node_exporter.git;branch=release-1.8;protocol=https;destsuffix=${GO_SRCURI_DESTSUFFIX}"
 
 remove_openbsd_init_script() {
 	rm -rfv ${S}/src/${GO_IMPORT}/examples/openbsd-rc.d/node_exporter

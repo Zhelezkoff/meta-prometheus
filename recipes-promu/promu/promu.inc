@@ -11,7 +11,9 @@ inherit native
 GO_IMPORT = "github.com/prometheus/promu"
 
 do_compile() {
+    chmod -R +w ${B}/.mod/
     oe_runmake build
+    chmod -R +w ${B}/.mod/
 }
 
 do_install() {

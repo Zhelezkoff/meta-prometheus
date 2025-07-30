@@ -1,0 +1,12 @@
+[Unit]
+Description=Pushgateway Service
+After=network.target
+
+[Service]
+User=pushgateway
+Group=pushgateway
+Type=simple
+ExecStart=/usr/sbin/pushgateway
+
+[Install]
+WantedBy=multi-user.target
